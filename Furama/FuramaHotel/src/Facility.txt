@@ -1,0 +1,163 @@
+//String maDichVu, String tenDichVu, String dienTichSuDung, double chiPhi, int soLuongNguoi, String kieuThue
+//    @Override
+//    public void createFacility() {
+//        ArrayList<Facility> listFacility = facilityRepository.getAll();
+//        try{
+//            System.out.println("NHẬP THÔN TIN CỦA FACILITY");
+//            // nhập mã dịch vụ
+//            System.out.println("Mã dịch vụ: ");
+//            String maDichVu = scanner.nextLine();
+//            // nhập tên của dịch vụ
+//            System.out.println("Tên ichjh vụ: ");
+//            String tenDichVu = scanner.nextLine();
+//            // Nhập diện tích sử dụng
+//            System.out.println("diện tích dử dụng");
+//            int usebleArea = Integer.parseInt(scanner.nextLine());
+//            // Nhập chi phí
+//            System.out.println("Chi phí: ");
+//            double chiPhi = Double.parseDouble(scanner.nextLine());
+//            //Nhập số lượng người
+//            System.out.println("So Lượng người: ");
+//            int soLuongNguoi = Integer.parseInt(scanner.nextLine());
+//            //Nhập kiểu thuê
+//            System.out.println("Kiểu thuê: ");
+//            String kieuThue = scanner.nextLine();
+//            // chọn những kiểu dịch vụ để thêm vào danh sách cần làm
+//            System.out.println("1. thêm House\n" +
+//                               "2. Thêm Room\n" +
+//                               "3. thêm Villa");
+//            int choose = Integer.parseInt(scanner.nextLine());
+//            switch (choose){
+//                case 1:
+//                    // Nhập tiêu chuẩn phòng
+//                    System.out.println("Tiêu chuẩn phòng: ");
+//                    String tieuChuanPhong = scanner.nextLine();
+//                    // Nhập số tầng
+//                    System.out.println("Số tầng: ");
+//                    int soTang = Integer.parseInt(scanner.nextLine());
+//                    //(String maDichVu, String tenDichVu, String dienTichSuDung, double chiPhi, int soLuongNguoi, String kieuThue, String tieuChuanPhong, int soTang
+//                    listFacility.add(new House(maDichVu,tenDichVu,usebleArea,chiPhi,soLuongNguoi,kieuThue,tieuChuanPhong,soTang));
+//                    break;
+//                case 2:
+//                    // Nhập dịch vụ miễn phis
+//                    System.out.println("Dịch vụ miễn Phí: ");
+//                    String dichVuFree = scanner.nextLine();
+//                    listFacility.add(new Room(maDichVu,tenDichVu,usebleArea,chiPhi,soLuongNguoi,kieuThue,dichVuFree));
+//                    break;
+//                case 3:
+//                    //Nhập tiêu chuẩn phòng
+//                    System.out.println("Tiêu chuẩn phòng: ");
+//                    String tieuChuan = scanner.nextLine();
+//                    // Nhập diện tích
+//                    System.out.println("Diện tích: ");
+//                    int area = Integer.parseInt(scanner.nextLine());
+//                    // Nhập số tầng
+//                    System.out.println("Số tầng: ");
+//                    int Tang = Integer.parseInt(scanner.nextLine());
+//                    listFacility.add(new Villa(maDichVu,tenDichVu,usebleArea,chiPhi,soLuongNguoi,kieuThue,tieuChuan,area,Tang));
+//            }
+//        }catch (Exception e){
+//            System.out.println("sai ở phần nhập dữ liệu cho Facility trong repository" + e.getMessage());
+//        }
+//    }
+//
+//    @Override
+//    public void readFacility() {
+//        ArrayList<Facility> listFacility = facilityRepository.getAll();
+//       try{
+//           for (int i=0;i<listFacility.size();i++){
+//               System.out.println(listFacility.get(i).toString());
+//           }
+//       }catch (Exception e){
+//           System.out.println("xuất thông tin của danh sách trong Facility trong repository không dúng!@@@@@");
+//       }
+//    }
+//
+//    @Override
+//    public ArrayList<Facility> updateFacility(String maDichVu) {
+//        ArrayList<Facility> listFacility = facilityRepository.getAll();
+//        for (int i= 0;i<listFacility.size();i++){
+//            if (listFacility.get(i).getMaDichVu().equals(maDichVu)){
+//                try{
+//                    try{
+//                        // cập nhật lại danh sách theo mã dịch vụ
+//                        System.out.println("CẬP NHẬP THÔN TIN CỦA FACILITY");
+//                        System.out.println("Tên ichjh vụ: ");
+//                        String tenDichVu = scanner.nextLine();
+//
+//                        System.out.println("diện tích dử dụng");
+//                        int usebleArea = Integer.parseInt(scanner.nextLine());
+//
+//                        System.out.println("Chi phí: ");
+//                        double chiPhi = Double.parseDouble(scanner.nextLine());
+//
+//                        System.out.println("So Lượng người: ");
+//                        int soLuongNguoi = Integer.parseInt(scanner.nextLine());
+//
+//                        System.out.println("Kiểu thuê: ");
+//                        String kieuThue = scanner.nextLine();
+//                        // Cập nhật lại danh sách thứ i trong listFacility
+//                        listFacility.get(i).setTenDichVu(tenDichVu);
+//                        listFacility.get(i).setDienTichSuDung(usebleArea);
+//                        listFacility.get(i).setChiPhi(chiPhi);
+//                        listFacility.get(i).setSoLuongNguoi(soLuongNguoi);
+//
+//                        // Cập nhật lại nếu là kiểu House
+//                        if (listFacility.get(i) instanceof House){
+//                            //Cập nhật lại tiêu chuẩn phòng
+//                            System.out.println("Tiêu chuẩn phòng: ");
+//                            String tieuChuanPhong = scanner.nextLine();
+//                            //Cập Nhập số tầng
+//                            System.out.println("Số tầng: ");
+//                            int soTang = Integer.parseInt(scanner.nextLine());
+//                            // Cập nhật lại theo danh sách.
+//                            ((House) listFacility.get(i)).setTieuChuanPhong(tieuChuanPhong);
+//                            ((House) listFacility.get(i)).setSoTang(soTang);
+//                        }
+//                        else if (listFacility.get(i) instanceof Room){
+//                            //Cập Nhập dịch vụ miễn phis
+//                            System.out.println("Dịch vụ miễn Phí: ");
+//                            String dichVuFree = scanner.nextLine();
+//                            // cập nhật
+//                            ((Room) listFacility.get(i)).setDichVuMienPhi(dichVuFree);
+//                        }
+//                        else {
+//                            //Cập Nhập tiêu chuẩn phòng
+//                            System.out.println("Tiêu chuẩn phòng: ");
+//                            String tieuChuan = scanner.nextLine();
+//                            //Cập Nhập diện tích
+//                            System.out.println("Diện tích: ");
+//                            int area = Integer.parseInt(scanner.nextLine());
+//                            // Cập Nhập số tầng
+//                            System.out.println("Số tầng: ");
+//                            int tang = Integer.parseInt(scanner.nextLine());
+//                            // Cập nhật
+//                            ((Villa) listFacility.get(i)).setTieuChuanPhong(tieuChuan);
+//                            ((Villa) listFacility.get(i)).setDienTich(area);
+//                            ((Villa) listFacility.get(i)).setSoTang(tang);
+//                        }
+//                    }catch (Exception e){
+//                        System.out.println("sai ở phần cập nhập dữ liệu cho Facility trong repository" + e.getMessage());
+//                    }
+//                }catch (Exception e){
+//                    System.out.println("Sai ở phần updateFacility trong repository");
+//                }
+//            }
+//        }
+//        return listFacility;
+//    }
+//
+//    @Override
+//    public ArrayList<Facility> deleteFacility(String maDichVu) {
+//        ArrayList<Facility> listFacility = facilityRepository.getAll();
+//        try{
+//            for (int i=0;i<listFacility.size();i++){
+//                if (listFacility.get(i).getMaDichVu().equals(maDichVu)){
+//                    listFacility.remove(i);
+//                }
+//            }
+//        }catch (Exception e){
+//            System.out.println("Sai ở phần deleteFacility trong repository");
+//        }
+//        return listFacility;
+//    }

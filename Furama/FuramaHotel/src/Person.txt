@@ -1,0 +1,228 @@
+// thêm thông tin cho Customer vào trong bảng
+    @Override
+    public void createCustomer() {
+       try{
+           System.out.println("NHẬP THÔNG TIN KHÁCH HÀNG");
+           //String hoten, Date ngaySinh, String gioiTinh, String soCMND, String sdt, String email, String trinhDo, String viTri, int salary, String maKhachHang
+           System.out.println("Họ tên: ");
+           String hoTen = scanner.nextLine();
+           System.out.println("Ngày sinh: ");
+           String date = scanner.nextLine();
+           Date ngaySinh = null;
+           try{
+               SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+               ngaySinh = simpleDateFormat.parse(date);
+           }catch (Exception e){
+               System.out.println("Nhập sai format ngày sinh trong CreateCustomer trong repository sai");
+           }
+           System.out.println("Giới tính: ");
+           String gioiTinh = scanner.nextLine();
+           System.out.println("Số CMND: ");
+           String soCMND = scanner.nextLine();
+           System.out.println("Số điện thoại: ");
+           String sdt = scanner.nextLine();
+           System.out.println("Email: ");
+           String email = scanner.nextLine();
+           System.out.println("Trình Độ: ");
+           String trinhDo = scanner.nextLine();
+           System.out.println("Vị trí: ");
+           String viTri = scanner.nextLine();
+           System.out.println("Lương: ");
+           int salary = Integer.parseInt(scanner.nextLine());
+           System.out.println("Mã Khách hàng: ");
+           String maKhachHang = scanner.nextLine();
+           listPerson.add(new Customer(hoTen,ngaySinh,gioiTinh,soCMND,sdt,email,trinhDo,viTri,salary,maKhachHang));
+           System.out.println("Thêm 1 Customer thành công!");
+       }catch (Exception e){
+           System.out.println("Sai ở phần tạo ra 1 cusomer mới để thêm vào danh sách.!");
+       }
+    }
+
+    @Override
+    public void readCustomer() {
+        System.out.println("--------------------------Danh sách Khách hàng-------------------");
+        for (int i=0;i<listPerson.size();i++){
+            if (listPerson.get(i) instanceof Customer){
+                System.out.println("Nhân viên thứ: "+ i);
+                System.out.println(listPerson.get(i).toString());
+            }
+        }
+        System.out.println("----------------------------------------------------------------");
+    }
+
+    @Override
+    public ArrayList<Person> updateCustomer(String makhachHang) {
+        try {
+            for (int i=0;i<listPerson.size();i++){
+                if (listPerson.get(i) instanceof Customer){
+                    if (((Customer) listPerson.get(i)).getMaKhachHang().equals(makhachHang)){
+                        System.out.println("Họ tên cập nhật: ");
+                        String hoTen = scanner.nextLine();
+                        System.out.println("Ngày sinh Cập nhật: ");
+                        String date = scanner.nextLine();
+                        Date ngaySinh = null;
+                        try{
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+                            ngaySinh = simpleDateFormat.parse(date);
+                        }catch (Exception e){
+                            System.out.println("Nhập sai format ngày sinh trong CreateCustomer trong repository sai");
+                        }
+                        System.out.println("Giới tính Cập nhật: ");
+                        String gioiTinh = scanner.nextLine();
+                        System.out.println("Số CMND Cập nhật: ");
+                        String soCMND = scanner.nextLine();
+                        System.out.println("Số điện thoại Cập nhật: ");
+                        String sdt = scanner.nextLine();
+                        System.out.println("Email Cập nhật: ");
+                        String email = scanner.nextLine();
+                        System.out.println("Trình Độ Cập nhật: ");
+                        String trinhDo = scanner.nextLine();
+                        System.out.println("Vị trí ập nhật: ");
+                        String viTri = scanner.nextLine();
+                        System.out.println("Lương Cập nhật: ");
+                        int salary = Integer.parseInt(scanner.nextLine());
+                        //Phần cập nhật cho từng thông tin của khách hàng  theo mã khác hàng.
+                        listPerson.get(i).setHoten(hoTen);
+                        listPerson.get(i).setNgaySinh(ngaySinh);
+                        listPerson.get(i).setGioiTinh(gioiTinh);
+                        listPerson.get(i).setSoCMND(soCMND);
+                        listPerson.get(i).setSdt(sdt);
+                        listPerson.get(i).setEmail(email);
+                        listPerson.get(i).setTrinhDo(trinhDo);
+                        listPerson.get(i).setViTri(viTri);
+                        listPerson.get(i).setSalary(salary);
+                    }
+                }
+            }
+            System.out.println("Cập nhật thành công");
+        }catch (Exception e){
+            System.out.println("Sai ở phần cập nhật Customer trong phần repository");
+        }
+        return listPerson;
+    }
+
+    @Override
+    public ArrayList<Person> deleteCustomer(String makhachang) {
+        for (int i=0;i<listPerson.size();i++){
+            if (listPerson.get(i) instanceof Customer){
+                if (((Customer) listPerson.get(i)).getMaKhachHang().equals(makhachang)){
+                    listPerson.remove(i);
+                }
+            }
+        }
+        return listPerson;
+    }
+
+    @Override
+    public void createEmployee() {
+        try{
+            System.out.println("NHẬP THÔNG TIN NHÂN VIÊN");
+            //String hoten, Date ngaySinh, String gioiTinh, String soCMND, String sdt, String email, String trinhDo, String viTri, int salary, String maKhachHang
+            System.out.println("Họ tên: ");
+            String hoTen = scanner.nextLine();
+            System.out.println("Ngày sinh: ");
+            String date = scanner.nextLine();
+            Date ngaySinh = null;
+            try{
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+                ngaySinh = simpleDateFormat.parse(date);
+            }catch (Exception e){
+                System.out.println("Nhập sai format ngày sinh trong CreateCustomer trong repository sai");
+            }
+            System.out.println("Giới tính: ");
+            String gioiTinh = scanner.nextLine();
+            System.out.println("Số CMND: ");
+            String soCMND = scanner.nextLine();
+            System.out.println("Số điện thoại: ");
+            String sdt = scanner.nextLine();
+            System.out.println("Email: ");
+            String email = scanner.nextLine();
+            System.out.println("Trình Độ: ");
+            String trinhDo = scanner.nextLine();
+            System.out.println("Vị trí: ");
+            String viTri = scanner.nextLine();
+            System.out.println("Lương: ");
+            int salary = Integer.parseInt(scanner.nextLine());
+            System.out.println("Mã nhân viên: ");
+            String maNhanVien = scanner.nextLine();
+            listPerson.add(new Employee(hoTen,ngaySinh,gioiTinh,soCMND,sdt,email,trinhDo,viTri,salary,maNhanVien));
+            System.out.println("Thêm 1 Employee thành công!");
+        }catch (Exception e){
+            System.out.println("Sai ở phần tạo ra 1 Employee mới để thêm vào danh sách.!");
+        }
+    }
+
+    @Override
+    public void readEmployee() {
+        System.out.println("--------------------------Danh sách Nhân Viên-------------------");
+        for (int i=0;i<listPerson.size();i++){
+            if (listPerson.get(i) instanceof Employee){
+                System.out.println("Nhân viên thứ "+i);
+                System.out.println(listPerson.get(i).toString());
+            }
+        }
+        System.out.println("----------------------------------------------------------------");
+    }
+
+    @Override
+    public ArrayList<Person> updateEmoloyee(String makhachHang) {
+        try {
+            for (int i=0;i<listPerson.size();i++){
+                if (listPerson.get(i) instanceof Customer){
+                    if (((Customer) listPerson.get(i)).getMaKhachHang().equals(makhachHang)){
+                        System.out.println("Họ tên cập nhật: ");
+                        String hoTen = scanner.nextLine();
+                        System.out.println("Ngày sinh Cập nhật: ");
+                        String date = scanner.nextLine();
+                        Date ngaySinh = null;
+                        try{
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+                            ngaySinh = simpleDateFormat.parse(date);
+                        }catch (Exception e){
+                            System.out.println("Nhập sai format ngày sinh trong CreateCustomer trong repository sai");
+                        }
+                        System.out.println("Giới tính Cập nhật: ");
+                        String gioiTinh = scanner.nextLine();
+                        System.out.println("Số CMND Cập nhật: ");
+                        String soCMND = scanner.nextLine();
+                        System.out.println("Số điện thoại Cập nhật: ");
+                        String sdt = scanner.nextLine();
+                        System.out.println("Email Cập nhật: ");
+                        String email = scanner.nextLine();
+                        System.out.println("Trình Độ Cập nhật: ");
+                        String trinhDo = scanner.nextLine();
+                        System.out.println("Vị trí ập nhật: ");
+                        String viTri = scanner.nextLine();
+                        System.out.println("Lương Cập nhật: ");
+                        int salary = Integer.parseInt(scanner.nextLine());
+                        //Phần cập nhật cho từng thông tin của khách hàng  theo mã khác hàng.
+                        listPerson.get(i).setHoten(hoTen);
+                        listPerson.get(i).setNgaySinh(ngaySinh);
+                        listPerson.get(i).setGioiTinh(gioiTinh);
+                        listPerson.get(i).setSoCMND(soCMND);
+                        listPerson.get(i).setSdt(sdt);
+                        listPerson.get(i).setEmail(email);
+                        listPerson.get(i).setTrinhDo(trinhDo);
+                        listPerson.get(i).setViTri(viTri);
+                        listPerson.get(i).setSalary(salary);
+                    }
+                }
+            }
+            System.out.println("Cập nhật thành công");
+        }catch (Exception e){
+            System.out.println("Sai ở phần cập nhật Customer trong phần repository");
+        }
+        return listPerson;
+    }
+
+    @Override
+    public ArrayList<Person> deleteEmployee(String maNhanVien) {
+        for (int i=0;i<listPerson.size();i++){
+            if (listPerson.get(i) instanceof Customer){
+                if (((Customer) listPerson.get(i)).getMaKhachHang().equals(maNhanVien)){
+                    listPerson.remove(i);
+                }
+            }
+        }
+        return listPerson;
+    }
